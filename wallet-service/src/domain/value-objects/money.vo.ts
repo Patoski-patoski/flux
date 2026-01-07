@@ -35,12 +35,21 @@ export class Money {
         return new Money(scaledAmount);
     }
 
-
-    add(other: Money): Money {
+    /**
+     *  Adds two Money instances.
+     * @param other
+     * @returns Money
+     */
+    public add(other: Money): Money {
         return new Money(this.amount + other.amount)
     }
 
-    subtract(other: Money): Money {
+    /**
+     * Subtracts another Money instance from this one.
+     * @param other 
+     * @returns Money
+     */
+    public subtract(other: Money): Money {
         if(!(other instanceof Money)) {
             throw new Error('Amount must be a Money instance');
         }
@@ -50,14 +59,25 @@ export class Money {
         return new Money(this.amount - other.amount)
     }
 
-    equals(other: Money): boolean {
+
+    /**
+     * Checks the equality between two Money instances.
+     * @param other 
+     * @returns boolean
+     */
+    public equals(other: Money): boolean {
         if (!(other instanceof Money)) {
             return false;
         }
         return this.amount === other.amount;
     }
-    
-    isGreaterThan(other: Money): boolean {
+
+    /**
+     * Checks if this Money instance is greater than another.
+     * @param other 
+     * @returns boolean
+     */
+    public isGreaterThan(other: Money): boolean {
         if (!(other instanceof Money)) {
             return false;
         }
@@ -72,7 +92,11 @@ export class Money {
         return Number(this.amount) / Number(Money.FACTOR);
     }
 
-    toString(): string {
+    /**
+     * Returns a string representation of this Money instance.
+     * @returns string
+     */
+    public toString(): string {
         return this.getValue().toFixed(Money.PRECISION);
     }
 

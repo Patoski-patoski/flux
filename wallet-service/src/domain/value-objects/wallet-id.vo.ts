@@ -21,18 +21,18 @@ export class WalletId {
         return new WalletId(uuid);
     }
 
-    equals(other: WalletId): boolean {
+    public equals(other: WalletId): boolean {
         if (!(other instanceof WalletId)) {
             return false;
         }
         return this.value === other.value;
     }
 
-    toString(): string {
+    public toString(): string {
         return this.value;
     }
 
-    toJSON(): string {
+    public toJSON(): string {
         return this.toString();
     }
 
