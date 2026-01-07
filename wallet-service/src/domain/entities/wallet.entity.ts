@@ -110,6 +110,6 @@ console.log(`Balance: ${wallet.getBalance().toString()}`); // $0.0000
 wallet.fund(Money.create(100));
 console.log(`After funding: ${wallet.getBalance().toString()}`); // $100.0000
 
-wallet.debit(Money.create(30));
+wallet.debit(Money.create(300));
 console.log(`After debit: ${wallet.getBalance().toString()}`); // $70.0000
 console.log(`Version: ${wallet.getVersion()}`); // 2
