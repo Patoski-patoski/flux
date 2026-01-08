@@ -104,12 +104,12 @@ export class Wallet {
     getUpdatedAt(): Date { return this.updatedAt; }
 }
 
-const wallet = Wallet.create('alice@example.com');
-console.log(`Balance: ${wallet.getBalance().toString()}`); // $0.0000
+// const wallet = Wallet.create('alice@example.com');
+// console.log(`Balance: ${wallet.getBalance().toString()}`); // $0.0000
 
-wallet.fund(Money.create(100));
-console.log(`After funding: ${wallet.getBalance().toString()}`); // $100.0000
+// wallet.fund(Money.create(100));
+// console.log(`After funding: ${wallet.getBalance().toString()}`); // $100.0000
 
-wallet.debit(Money.create(300));
-console.log(`After debit: ${wallet.getBalance().toString()}`); // $70.0000
-console.log(`Version: ${wallet.getVersion()}`); // 2
+// wallet.debit(Money.create(300));
+// console.log(`After debit: ${wallet.getBalance().toString()}`); // $70.0000
+// console.log(`Version: ${wallet.getVersion()}`); // 2

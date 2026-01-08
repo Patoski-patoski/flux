@@ -38,6 +38,6 @@ export class WalletId {
 
 }
 
-const myWalletId = WalletId.generate();
-console.log(`Generated WalletId: ${myWalletId.toString()}`);
-console.log(`Get walletId: ${myWalletId.toString()}`)
+// const myWalletId = WalletId.generate();
+// console.log(`Generated WalletId: ${myWalletId.toString()}`);
+// console.log(`Get walletId: ${myWalletId.toString()}`)

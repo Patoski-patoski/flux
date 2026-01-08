@@ -22,7 +22,11 @@ export class Money {
      */
     static create(value: number): Money {
         // check decimal places before converting
-        if(typeof value !== 'number' || isNaN(value) || !isFinite(value) || value < 0) {
+        if (typeof value !== 'number'
+            || isNaN(value)
+            || !isFinite(value)
+            || value < 0) {
+
             throw new Error('Invalid amount for Money');
         }
 
@@ -41,8 +45,12 @@ export class Money {
      * @returns Money
      */
     public add(other: Money): Money {
+        if (!other || typeof other.amount !== 'bigint') {
+            throw new Error('Argument must be a Money instance');
+        }
         return new Money(this.amount + other.amount)
     }
+
 
     /**
      * Subtracts another Money instance from this one.
@@ -50,10 +58,10 @@ export class Money {
      * @returns Money
      */
     public subtract(other: Money): Money {
-        if(!(other instanceof Money)) {
-            throw new Error('Amount must be a Money instance');
+        if (!other || typeof other.amount !== 'bigint') {
+            throw new Error('Argument must be a Money instance');
         }
-        if (this.amount < other.amount) {
+        if (this.isLessThan(other)) {
             throw new Error('Insufficient funds: cannot substract larger amount');
         }
         return new Money(this.amount - other.amount)
@@ -66,10 +74,16 @@ export class Money {
      * @returns boolean
      */
     public equals(other: Money): boolean {
-        if (!(other instanceof Money)) {
-            return false;
-        }
         return this.amount === other.amount;
+    }
+
+    /**
+    * Checks if this Money instance is less than another.
+    * @param other 
+    * @returns boolean
+    */
+    public isLessThan(other: Money): boolean {
+        return this.amount < other.amount;
     }
 
     /**
@@ -78,9 +92,6 @@ export class Money {
      * @returns boolean
      */
     public isGreaterThan(other: Money): boolean {
-        if (!(other instanceof Money)) {
-            return false;
-        }
         return this.amount > other.amount;
     }
 
@@ -102,7 +113,5 @@ export class Money {
 
 }
 
-
-const price = Money.create(250.35);
-console.log(price.toString());
-console.log(price.getValue());
+// const userBalance = Money.create(100);
+// console.log(userBalance.isGreaterThan(21))
