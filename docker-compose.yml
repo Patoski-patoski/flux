@@ -6,8 +6,8 @@ services:
     container_name: flux-postgres
     environment:
       POSTGRES_DB: flux_wallet
-      POSTGRES_UsER: flux_user
-      POSTGRES_PASSWORD: flux_pass
+      POSTGRES_USER: flux_user
+      POSTGRES_PASSWORD: flux_password
     ports:
       - "5432:5432"
     volumes:
@@ -43,7 +43,7 @@ services:
       KAFKA_OFFSET_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'true'
     healthcheck:
-      test ["CMD-SHELL", "kafka-broker-api-versions --bootstrap-server localhost:9092"]
+      test: ["CMD-SHELL", "kafka-broker-api-versions --bootstrap-server localhost:9092"]
       interval: 10s
       timeout: 10s
       retries: 5
@@ -62,5 +62,5 @@ services:
   
 
 volumes:
-postgres_data:
+  postgres_data:
 
