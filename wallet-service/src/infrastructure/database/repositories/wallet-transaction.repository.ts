@@ -1,4 +1,4 @@
-import { PoolClient, QueryResult } from "pg";
+import { PoolClient } from "pg";
 import { WalletTransaction } from "src/domain/entities/wallet-transaction.entity";
 import { WalletId } from "src/domain/value-objects/wallet-id.vo";
 import { Database } from "../database";
