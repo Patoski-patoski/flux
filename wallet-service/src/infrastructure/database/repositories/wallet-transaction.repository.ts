@@ -104,7 +104,7 @@ export class WalletTransactionRepository implements IWalletTransactionRepository
             row.amount,
             row.type,
             row.status,
-            row.createdAt
+            row.created_at
             )
         )
     }
