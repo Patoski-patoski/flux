@@ -56,11 +56,11 @@ export class Database {
         try {
             const result = await this.pool.query(text, params);
             const duration = Date.now() - start;
-            // console.log('Executed query', {
-            //     text: text.substring(0, 100) + '...', // Log first 100 chars
-            //     duration,
-            //     rows: result.rowCount
-            // });
+            console.log('Executed query', {
+                text: text.substring(0, 100) + '...', // Log first 100 chars
+                duration,
+                rows: result.rowCount
+            });
             return result;
 
         } catch (error) {

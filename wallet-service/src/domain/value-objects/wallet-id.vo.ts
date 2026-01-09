@@ -9,12 +9,12 @@ export class WalletId {
         this.value = value;
     }
 
-    static create(value: string): WalletId {
-        if (!value || typeof value !== 'string') {
-            throw new Error('Invalid WalletId');
-        }
-        return this.generate();
+   public static create(value: string): WalletId {
+    if (!value || typeof value !== 'string') {
+        throw new Error('Invalid WalletId');
     }
+    return new WalletId(value); 
+}
 
     static generate(): WalletId {
         const uuid = crypto.randomUUID();

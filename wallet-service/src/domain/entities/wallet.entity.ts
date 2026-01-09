@@ -52,7 +52,7 @@ export class Wallet {
         id: string,
         userId: string,
         balance: number,
-        version: number,
+        version: number | string,
         createdAt: Date,
         updatedAt: Date
     ): Wallet {
@@ -61,7 +61,7 @@ export class Wallet {
             WalletId.create(id),
             userId,
             Money.create(balance),
-            version,
+            Number(version),
             createdAt,
             updatedAt
         );

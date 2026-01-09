@@ -32,6 +32,8 @@ export class WalletService {
         return wallet;
     }
 
+    
+
     /**
      * Adds money to a wallet.
      */
