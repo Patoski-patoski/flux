@@ -20,25 +20,26 @@ export class Money {
      * @param value 
      * @returns Money Object
      */
-    static create(value: number): Money {
-        // check decimal places before converting
-        if (typeof value !== 'number'
-            || isNaN(value)
-            || !isFinite(value)
-            || value < 0) {
+    public static create(value: number | string): Money {
+        // Convert string to number if needed
+        const numValue = typeof value === 'string' ? parseFloat(value) : value;
 
+        if (typeof numValue !== 'number'
+            || isNaN(numValue)
+            || !isFinite(numValue)
+            || numValue < 0) {
             throw new Error('Invalid amount for Money');
         }
 
-        const decimalPlace = (value.toString().split('.')[1] || '').length;
-
-        if (decimalPlace > Money.PRECISION) {
-            throw new Error(`Money exceeds maximum precision of ${Money.PRECISION} decimal places`);
+        // Check decimal places
+        const decimalPlaces = (numValue.toString().split('.')[1] || '').length;
+        if (decimalPlaces > Money.PRECISION) {
+            throw new Error(`Money cannot have more than ${Money.PRECISION} decimal places`);
         }
-        const scaledAmount = BigInt(Math.round(value * Number(Money.FACTOR)));
+
+        const scaledAmount = BigInt(Math.round(numValue * Number(Money.FACTOR)));
         return new Money(scaledAmount);
     }
-
     /**
      *  Adds two Money instances.
      * @param other
